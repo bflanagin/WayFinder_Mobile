@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>glcode.js</file>
+        <file>three.js</file>
+        <file>Login.qml</file>
+        <file>graphics/img/logo1.png</file>
+        <file>graphics/img/logo2.png</file>
+        <file>graphics/img/OpenSeed.png</file>
+        <file>Style.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>WFTextField.qml</file>
+        <file>graphics/img/space1-portrait.png</file>
+    </qresource>
+</RCC>
