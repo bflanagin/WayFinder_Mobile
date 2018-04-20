@@ -6,7 +6,7 @@ var cube;
 function initializeGL(canvas) {
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 1000);
-    camera.position.z = 5;
+    camera.position.z = 3;
 
     var material = new THREE.MeshBasicMaterial({ color: 0x80c342,
                                                    shading: THREE.SmoothShading });

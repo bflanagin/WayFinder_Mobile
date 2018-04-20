@@ -40,6 +40,6 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_EXTRA_LIBS = \
-        /home/benjamin/Projects/WayFinder_Mobile/openssl/libcrypto.so \
+        $$PWD/openssl/libcrypto.so \
         $$PWD/openssl/libssl.so
 }

@@ -2,6 +2,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.2
 //import QtQuick.Controls.Styles 1.4
+import "openseed.js" as OpenSeed
 
 Item {
     id:thisWindow
@@ -103,19 +104,19 @@ Item {
         height:parent.height* 0.97
         anchors.centerIn: parent
         //visible:if(parent.height == mainView.height * 0.80) {true} else {false}
-        spacing:mainView.width * 0.05
+        spacing:mainView.width * 0.04
 
         Image {
             anchors.horizontalCenter: parent.horizontalCenter
             source:"qrc:/graphics/img/logo2.png"
-            width:parent.width * 0.5
+            width:parent.width * 0.45
             fillMode: Image.PreserveAspectFit
         }
 
         Text {
             id: title
             width:parent.width * 0.98
-            text: qsTr("Welcome Commander")
+            text: qsTr("Welcome, Commander")
             font.pointSize: if(parent.width > 0) {parent.width * 0.07} else {20}
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
@@ -126,7 +127,8 @@ Item {
 
         Text {
             id: prompt
-            text: qsTr("Use your OpenSeed account to log in")
+            text: if(newaccount == false) {qsTr("Use your OpenSeed account to log in")}
+                                            else {qsTr("Create a new OpenSeed account")}
             width:parent.width * 0.98
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: if(parent.width > 0) {parent.width * 0.03} else {8}
@@ -140,9 +142,20 @@ Item {
             color:borderColor
             width:parent.width * 0.7
             anchors.horizontalCenter: parent.horizontalCenter
-            placeholderText: "User Name"
+            //focus:true
+            placeholderText: "user name "
+            onFocusChanged: if(focus == false) {OpenSeed.checkcreds("username",text)}
+
+            Text{
+                anchors.right:parent.right
+                horizontalAlignment: Text.AlignRight
+                text:qsTr("In Use")
+                visible: if(uniquename == 1 && newaccount == true) {true} else {false}
+                color:borderColor
+            }
 
         }
+
 
         TextField {
             id:email
@@ -150,6 +163,15 @@ Item {
             width:parent.width * 0.7
             anchors.horizontalCenter: parent.horizontalCenter
            placeholderText: "email@example.com"
+           onFocusChanged: if(focus == false) {OpenSeed.checkcreds("email",text)}
+
+           Text{
+               anchors.right:parent.right
+               horizontalAlignment: Text.AlignRight
+               text:qsTr("In Use")
+               visible: if(uniqueemail == 1 && newaccount == true) {true} else {false}
+               color:borderColor
+           }
         }
 
         TextField {
@@ -162,11 +184,52 @@ Item {
 
         }
 
+        Button {
+            id:login
+            text:if(newaccount == false) {qsTr("Login")} else {qsTr("Create")}
+            //anchors.right:parent.right
+           // anchors.rightMargin: parent.width * 0.3
+            anchors.horizontalCenter: parent.horizontalCenter
+            enabled:if(password.text.length > 1) {true} else {false}
+            onClicked: if(newaccount == false) {message = "Checking Creditials";
+                        OpenSeed.checkcreds("passphrase",name.text+":,:"+email.text+":,:"+password.text);
+                           if(userid != " ") {
+                                thisWindow.state = "Hide"
+                                gameselect.state = "Show"
+                           }
+                        } else {
+                           if(uniqueemail == 0 && uniquename == 0) {
+                               message = "creating account";
+                               OpenSeed.oseed_auth(name.text,email.text,password.text);
+                           } else {
+                               message = "Sorry either the username or password is in use";
+                           }
+                       }
+
+        }
+
 
 
 
 
     }
+
+    Text {
+        anchors.bottom:parent.bottom
+        anchors.left:parent.left
+        anchors.leftMargin: parent.width * 0.02
+        anchors.bottomMargin:parent.width * -0.025
+        //width:parent.height * 0.07
+        height:parent.height * 0.05
+        text:if(newaccount == false) {qsTr("Create Account")} else {qsTr("Login")}
+        color:"white"
+        font.pointSize: if(parent.width > 0) {parent.width * 0.03} else {8}
+        MouseArea {
+            anchors.fill: parent
+            onClicked: if(newaccount == false) {newaccount = true;} else {newaccount = false;}
+        }
+    }
+
 
     Image {
         anchors.bottom:parent.bottom

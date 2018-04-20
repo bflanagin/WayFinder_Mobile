@@ -11,5 +11,24 @@
         <file>qtquickcontrols2.conf</file>
         <file>WFTextField.qml</file>
         <file>graphics/img/space1-portrait.png</file>
+        <file>openseed.js</file>
+        <file>main.js</file>
+        <file>CharacterSelect.qml</file>
+        <file>GameMode.qml</file>
+        <file>Map.qml</file>
+        <file>Turn.qml</file>
+        <file>MainMenu.qml</file>
+        <file>CharacterManifest.qml</file>
+        <file>Flasher.qml</file>
+        <file>WFButtonMenu.qml</file>
+        <file>Encyclopedia.qml</file>
+        <file>WFBorder.qml</file>
+        <file>Game.qml</file>
+        <file>logic.js</file>
+        <file>Players.qml</file>
+        <file>PlayerScreen.qml</file>
+        <file>sToryTemplaTe.js</file>
+        <file>WFButtonAction.qml</file>
+        <file>PopUp.qml</file>
     </qresource>
 </RCC>
