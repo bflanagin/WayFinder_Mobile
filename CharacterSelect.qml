@@ -266,6 +266,7 @@ Item {
                     onClicked: {
                                 if(thePlayers != "") {
                                 thePlayers = thePlayers+","+characterNum;
+                                    Scripts.pc_load();
                                 } else {
                                     thePlayers = characterNum;
                                     Scripts.pc_load();

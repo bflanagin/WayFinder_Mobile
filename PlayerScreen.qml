@@ -147,8 +147,16 @@ I know that it sounds melodramatic but I for one need this experiment to succeed
             anchors.top:parent.top
             anchors.topMargin: mainView.width * 0.05
             width: mainView.width * 0.40
-            height: mainView.width * 0.40
+            height: mainView.width * 0.20
             buttontext: "Move"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    action.state = "Engage"
+                    action.type = "Move"
+                }
+            }
         }
 
         WFButtonAction {
@@ -160,13 +168,22 @@ I know that it sounds melodramatic but I for one need this experiment to succeed
             anchors.left: moveAction.left
             //anchors.leftMargin: mainView.width *0.03
             width: mainView.width * 0.40
-            height: mainView.width * 0.40
+            height: mainView.width * 0.20
             buttontext: "Attack"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    action.state = "Engage"
+                    action.type = "Attack"
+                }
+            }
         }
 
         Map {
-            width: mainView.width * 0.4
-            height: mainView.width * 0.4
+            id:map
+            width: mainView.width * 0.45
+            height: mainView.width * 0.45
             anchors.right: parent.right
             anchors.rightMargin: mainView.width * 0.02
             anchors.top: parent.top
@@ -174,8 +191,22 @@ I know that it sounds melodramatic but I for one need this experiment to succeed
         }
 
         WFBorder {
+            anchors.top:map.bottom
+            anchors.topMargin: mainView.width * 0.02
+            anchors.bottom: abilities.top
+            anchors.bottomMargin: mainView.width * 0.02
+            anchors.left: parent.left
+            anchors.leftMargin: mainView.width * 0.02
+            anchors.right: parent.right
+            anchors.rightMargin: mainView.width * 0.02
+            state: "Show"
+        }
+
+        WFBorder {
+            id:abilities
             //width: mainView.width * 0.98
-            height: mainView.width * 0.48
+            height: mainView.height * 0.28
+
             anchors.left: parent.left
             anchors.leftMargin: mainView.width * 0.02
             anchors.right: parent.right
@@ -265,6 +296,20 @@ I know that it sounds melodramatic but I for one need this experiment to succeed
 
                 }
             }
+    }
+
+    PopUp {
+        id:action
+        anchors.centerIn: parent
+        maxWidth: parent.width * 0.75
+        maxHeight: parent.width * 0.75
+        state: "Hide"
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                parent.state = "Hide";
+            }
+        }
     }
 
 }

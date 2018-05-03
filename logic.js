@@ -1,20 +1,43 @@
 function player_movement(playerNum,modifier) {
 
    //random number for movement
-return Math.floor(Math.random() * 6);
+
+    var mov = Math.floor(Math.random() * 6);
+    var movReturn = 0;
+
+    if(mov == 0 ) {mov = 1;}
+
+        movReturn = mov;
+
+return movReturn;
 }
 
-function player_attact(playerNum,modifier) {
+function player_attack(playerNum,modifier) {
 
     //random attack number
-  return Math.floor(Math.random() * 6);
+
+    var act = Math.floor(Math.random() * 6);
+    var actReturn = 0;
+
+    if(act == 0 ) {act = 1;}
+
+        actReturn = act;
+
+  return actReturn;
 
 }
 
 function player_defense(playerNum,modifier) {
 
     //random defense number
-  return  Math.floor(Math.random() * 6);
+    var def = Math.floor(Math.random() * 6);
+    var defReturn = 0;
+
+    if(def == 0 ) {def = 1;}
+
+        defReturn = def;
+
+  return defReturn
 
 }
 
