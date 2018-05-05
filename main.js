@@ -50,16 +50,16 @@ function pc_select(pcNum,field) {
 
 
                             switch(field) {
-                                 case "id": valueReturn = pull.rows.item(record).id;break;
-                                 case "rank": valueReturn = pull.rows.item(record).rank;break;
-                                 case "type": valueReturn = pull.rows.item(record).type;break;
-                                 case "name": valueReturn = pull.rows.item(record).name;break;
-                                 case "commission": valueReturn = pull.rows.item(record).commission;break;
-                                 case "status": valueReturn = pull.rows.item(record).status;break;
-                                 case "about": valueReturn = pull.rows.item(record).about;break;
-                                 case "ab1": valueReturn = pull.rows.item(record).ability1;break;
-                                 case "ab2": valueReturn = pull.rows.item(record).ability2;break;
-                                 case "ab3": valueReturn = pull.rows.item(record).ability3;break;
+                                 case "id": valueReturn = pull.rows.item(0).id;break;
+                                 case "rank": valueReturn = pull.rows.item(0).rank;break;
+                                 case "type": valueReturn = pull.rows.item(0).type;break;
+                                 case "name": valueReturn = pull.rows.item(0).name;break;
+                                 case "commission": valueReturn = pull.rows.item(0).commission;break;
+                                 case "status": valueReturn = pull.rows.item(0).status;break;
+                                 case "about": valueReturn = pull.rows.item(0).about;break;
+                                 case "ab1": valueReturn = pull.rows.item(0).ability1;break;
+                                 case "ab2": valueReturn = pull.rows.item(0).ability2;break;
+                                 case "ab3": valueReturn = pull.rows.item(0).ability3;break;
                                 }
 
         });

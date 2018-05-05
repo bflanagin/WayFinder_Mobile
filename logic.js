@@ -64,10 +64,22 @@ function pull_log(mission,playerNum,playertype) {
 
     //pulls log for player taking in the accounts of past rolls
 
+    var log = ""
+        switch(playertype) {
+        case "Command": log ="We've been traveling at maxium burn for more than a month. My crew has been preforming with distinction as I expected.\
+I know that it sounds melodramatic but I for one need this experiment to succeed, its been too long since I've felt the vibration of a real ship under my feet. Heh, I just never thought I would be on a ship that was practically all engine.
+";break;
+        default: log = "No log entry";break;
+        }
+
+
+
+   return log;
+
 }
 
-function pull_event(mission,playerNum,playertype) {
-    var event = "Everything seems to be working as expected";
+function pull_event(mission,playerNum,playertype,round) {
+    var event = "Everything seems to be working as expected -"+playertype+"-";
     var ev = 0;
     //pull events generic or exacting for player taking in the accounts of past rolls
 
@@ -103,12 +115,27 @@ function place_tiles(mission,playerNum,playertype) {
     var dir = 0
     dir = Math.floor(Math.random() * 3);
 
-        switch(dir) {
-        case 0: direction = "continuing main path";break;
+    switch (round) {
+    case 1:switch(dir) {
+        case 0: direction = "heading toward the Bridge";break;
+        case 1: direction = "to the left of your station";break;
+        case 2: direction = "to the right of your station";break;
+        default:direction ="heading away from the Bridge";break;
+        };break;
+    case 0:switch(dir) {
+        case 0: direction = "continuing in the same direction as the last tile";break;
         case 1: direction = "to the left of the last tile";break;
         case 2: direction = "to the right of the last tile";break;
-        default:direction ="continuing main path";break;
-        }
+        default:direction =" continuing in the same direction as the last tile";break;
+        };break;
+    default:switch(dir) {
+        case 0: direction = "continuing path";break;
+        case 1: direction = "to the left of the last tile";break;
+        case 2: direction = "to the right of the last tile";break;
+        default:direction ="continuing path";break;
+        }break;
+
+    }
 
     return direction;
 }
@@ -132,7 +159,12 @@ function itterate() {
 function rounds(type) {
     var roundCommand = "";
     if(round == 0) {
-            roundCommand ="Start game"
+            if(type == "Command") {
+            roundCommand = "Start game: Place your piece on the Bridge."
+             } else {
+            roundCommand ="Start game: Place "+type+"'s station " + pull_tiles(0,turn,0)+" "+place_tiles(0,turn,0)+" and "+ pull_tiles(0,turn,0)+" "+place_tiles(0,turn,0)+" from the Bridge. \
+Place your piece at your station.\n\nThen remove the tiles between.";
+                }
     } else {
         roundCommand = "Place "+pull_tiles(0,turn,0)+" "+place_tiles(0,turn,0);
     }

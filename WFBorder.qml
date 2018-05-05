@@ -125,6 +125,7 @@ Item {
      anchors.top:parent.top
      color:borderColor
      radius:height /2
+     z:2
     }
 
 
@@ -136,6 +137,7 @@ Item {
      anchors.bottom:parent.bottom
      color:borderColor
      radius:height /2
+     z:2
     }
 
 }
