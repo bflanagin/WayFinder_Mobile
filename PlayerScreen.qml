@@ -341,10 +341,10 @@ Item {
                           //   console.log(mcounter);
                              mcounter = mcounter -1;
                          } else {
-                          //   action.type = "";
-                           //  action.state = "Hide";
+                             gameCard.state = "Engage";
+                             actionCard.state = "Hide";
+                             Logic.itterate();
                              mcounter = 20;
-                            // ticker.stop();
 
                          }
         }

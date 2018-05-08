@@ -65,8 +65,8 @@ Rather esentric Liam often finds that talking with machinery easier than talking
               "AB3",
                 ];
     var c4 = [ 3,
-                "tactical Officer",
-              "Chief tactical Officer",
+                "Tactical Officer",
+              "Chief Tactical Officer",
               "Seamus McNeal",
               "U.S.C.",
               "Available",
@@ -82,14 +82,15 @@ Rather esentric Liam often finds that talking with machinery easier than talking
               "Jennifer Johanson",
               "U.S.C.",
               "Available",
-              "Jennifer Johanson, or JJ if you want to end up in the med bay by her hand, isn't your typical medic. She is a no nonsense woman that has seen her share of death and quite unfortunatly\
-those that should have died. She was a junior officer on the ship that Captain Pen-Wright lost so many years ago. It was her bravery that saved a great number of the crew on that ill-fated day, and it was the captain that forced her into the escape pod with him just before it was to late.",
+              "Jennifer Johanson, or JJ if you want to end up in the med bay by her hand, isn't your typical medic. She is a no nonsense woman that has seen her share of death and quite unfortunately\
+ those that should have died. She was a junior officer on the ship that Captain Pen-Wright lost so many years ago. It was her bravery that saved a great number of the crew on that ill-fated day, and it was the captain that forced her into the escape pod with him just before it was to late.",
               "AB1",
               "AB2",
               "AB3",
                 ];
 
         db.transaction(function(tx) {
+                tx.executeSql('DROP TABLE PlayableCharacters');
 
              tx.executeSql('CREATE TABLE IF NOT EXISTS PlayableCharacters (id INT, type TEXT,rank TEXT,name TEXT, commission TEXT,status TEXT,about TEXT,ability1 TEXT,ability2 TEXT,ability3 TEXT)');
 

@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 WFBorder {
-    property string shipname: "Wheyl"
+    property string shipname: "Hermann-Wyell"
     clip:true
 
 
